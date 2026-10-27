@@ -1,0 +1,21 @@
+{
+  "name": "trabalho_final_pit_dw_fic_bd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LPeter-nmPITAccount/trabalho_final_pit_dw_fic_bd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/LPeter-nmPITAccount/trabalho_final_pit_dw_fic_bd/issues"
+  },
+  "homepage": "https://github.com/LPeter-nmPITAccount/trabalho_final_pit_dw_fic_bd#readme"
+}
