@@ -1,15 +1,463 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contaí — Seu financeiro no WhatsApp</title>
+
+    <meta name="description"
+        content="O Contaí é um assistente financeiro com IA para autônomos e MEIs. Registre entradas e saídas pelo WhatsApp e separe o dinheiro do trabalho do dinheiro pessoal." />
+
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet" />
+
     <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-    <header>
-        <h1>Titulo</h1>
-        <p>Parágrafo</p>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <header class="header" id="topo">
+        <div class="container header__inner">
+            <a href="#inicio" class="logo" aria-label="Contaí — ir para o início">
+                <img src="img/logo.png" alt="Contaí — Seu financeiro no WhatsApp" width="156" height="52" />
+            </a>
+
+            <nav class="nav" id="nav" aria-label="Principal">
+                <a href="#inicio">Início</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#funcionalidades">Funcionalidades</a>
+                <a href="#planos">Planos</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contato" class="btn btn--primary btn--sm nav__cta">Lista de espera</a>
+            </nav>
+
+            <!-- Botão (3 tracinhos). Só aparece no celular -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"
+                aria-controls="nav">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+
     </header>
+
+    <main id="conteudo">
+        <section class="hero" id="inicio">
+            <div class="container hero__grid">
+
+
+                <div class="hero__text reveal">
+                    <span class="badge">💬 Seu financeiro no WhatsApp</span>
+
+
+                    <h1>Separe o dinheiro do trabalho do dinheiro <em>pessoal.</em></h1>
+
+                    <p class="lead">O Contaí é um assistente financeiro com IA para autônomos e MEIs. Você manda seus
+                        gastos e entradas pelo WhatsApp, em texto, áudio ou foto, e a gente organiza, categoriza e
+                        mostra tudo de forma simples.</p>
+
+                    <div class="hero__actions">
+
+                        <a href="#contato" class="btn btn--primary btn--lg">Entrar na lista de espera <span
+                            aria-hidden="true">→</span></a>
+
+                        <button type="button" class="btn btn--outline btn--lg" data-open-chat>Falar com a Taí</button>
+                    </div>
+
+
+                    <ul class="checks">
+                        <li>Sem planilhas</li>
+                        <li>Feito para autônomos e MEIs</li>
+                        <li>Privacidade e LGPD</li>
+                    </ul>
+                </div>
+
+
+                <div class="hero__phone reveal">
+                    <div class="phone" aria-hidden="true">
+                        <div class="phone__notch"></div>
+
+                        <div class="wa">
+
+                            <div class="wa__bar">
+                                <img src="img/mascote.png" alt="" class="wa__avatar" width="34" height="34" />
+                                <div><strong>Contaí</strong><small>Online</small></div>
+                            </div>
+
+                            <div class="wa__body">
+                                <div class="msg msg--out">Recebi R$ 350 da Ana, corte de cabelo</div>
+
+                                <div class="msg msg--in">Pronto! ✅<br><strong>Entrada · R$ 350,00</strong><br>💼
+                                    Profissional · Serviços</div>
+
+                                <!-- Mensagem com "foto" de um comprovante (desenhada em CSS). -->
+                                <div class="msg msg--out msg--photo">
+                                    <div class="receipt"><span></span><span></span><span></span><span></span></div>
+                                    Mercado R$ 56,90
+                                </div>
+
+                                <div class="msg msg--in">Anotado! 🛒<br><strong>Saída · R$ 56,90</strong><br>🏠 Pessoal
+                                    · Alimentação</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section" id="sobre">
+            <div class="container">
+
+                <!-- Título da seção. A classe "reveal" faz o bloco aparecer com
+             animação quando entra na tela. -->
+                <header class="section__head reveal">
+                    <h2>O que é o Contaí?</h2>
+                    <p>Um sistema de controle financeiro que vive onde você já conversa: o WhatsApp.</p>
+                </header>
+
+                <div class="about reveal">
+                    <!-- Texto explicando o sistema. -->
+                    <div class="about__text">
+                        <p>Quem trabalha por conta própria costuma misturar as contas: o dinheiro do negócio e o
+                            dinheiro de casa saem da mesma conta, e no fim do mês ninguém sabe quanto sobrou de verdade.
+                        </p>
+                        <p>No Contaí, uma <strong>inteligência artificial faz a ponte</strong> entre você e suas
+                            finanças. Você conta o que entrou ou saiu, do seu jeito, e ela entende a conversa, registra
+                            a movimentação e <strong>separa o que é do trabalho e o que é pessoal</strong>. Depois
+                            devolve uma resposta clara, e você pode corrigir qualquer coisa.</p>
+                    </div>
+
+                    <ul class="about__list">
+                        <li><span>🧾</span> Planilhas pedem disciplina todo dia.</li>
+                        <li><span>🔀</span> Gastos pessoais e do negócio se misturam.</li>
+                        <li><span>📉</span> A renda varia e é difícil saber quanto guardar para impostos.</li>
+                    </ul>
+                </div>
+
+                <h3 class="subhead reveal">Para quem é</h3>
+
+                <!-- CARDS do público-alvo -->
+                <div class="cards cards--3">
+                    <article class="card reveal"><span class="card__icon">✂️</span>
+                        <h3>Autônomos</h3>
+                        <p>Cabeleireiras, fotógrafos, freelancers, motoristas e quem cobra por serviço prestado.</p>
+                    </article>
+                    <article class="card reveal"><span class="card__icon">🧑‍💼</span>
+                        <h3>MEIs</h3>
+                        <p>Microempreendedores individuais que precisam acompanhar faturamento e a guia mensal.</p>
+                    </article>
+                    <article class="card reveal"><span class="card__icon">🏪</span>
+                        <h3>Microempresários</h3>
+                        <p>Donos de pequenos negócios que querem clareza sem contratar um sistema complicado.</p>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <section class="section section--alt" id="como-funciona">
+            <div class="container">
+
+                <header class="section__head reveal">
+                    <h2>Como funciona</h2>
+                    <p>Você cuida do seu negócio, o Contaí cuida do resto.</p>
+                </header>
+
+                <!-- ol = lista numerada. Cada passo tem número, ícone, título e texto. -->
+                <ol class="steps">
+                    <li class="step reveal"><span class="step__num">1</span>
+                        <div class="step__icon">💬</div>
+                        <h3>Você envia</h3>
+                        <p>Texto, áudio ou foto do comprovante pelo WhatsApp.</p>
+                    </li>
+                    <li class="step reveal"><span class="step__num">2</span>
+                        <div class="step__icon">🧠</div>
+                        <h3>A IA entende</h3>
+                        <p>Identifica valor, entrada ou saída, categoria e se é pessoal ou profissional.</p>
+                    </li>
+                    <li class="step reveal"><span class="step__num">3</span>
+                        <div class="step__icon">✏️</div>
+                        <h3>Você confere</h3>
+                        <p>Vê o que foi entendido e corrige com uma mensagem, se precisar.</p>
+                    </li>
+                    <li class="step reveal"><span class="step__num">4</span>
+                        <div class="step__icon">📊</div>
+                        <h3>Você acompanha</h3>
+                        <p>Resumo semanal no WhatsApp e painel web com o fechamento do mês.</p>
+                    </li>
+                </ol>
+
+            </div>
+        </section>
+
+
+
+
+        <section class="section" id="funcionalidades">
+            <div class="container">
+
+                <header class="section__head reveal">
+                    <h2>Funcionalidades do MVP</h2>
+                    <p>O essencial para organizar o dinheiro sem complicação.</p>
+                </header>
+
+    
+                <div class="cards">
+                    <article class="card reveal"><span class="card__icon">🧾</span>
+                        <h3>Registro pelo WhatsApp</h3>
+                        <p>Receitas e despesas por texto, áudio e foto de comprovantes.</p>
+                    </article>
+                    <article class="card reveal"><span class="card__icon">✨</span>
+                        <h3>Classificação com IA</h3>
+                        <p>Entrada ou saída, categoria e natureza do lançamento, automaticamente.</p>
+                    </article>
+
+                    <article class="card reveal"><span class="card__icon">🏷️</span>
+                        <h3>Pessoal ou profissional</h3>
+                        <p>Separe o dinheiro do trabalho do dinheiro de casa em cada lançamento.</p>
+                    </article>
+
+                    <article class="card reveal"><span class="card__icon">📥</span>
+                        <h3>Importe extratos</h3>
+                        <p>Lance movimentações a partir de arquivos PDF, CSV ou OFX.</p>
+                    </article>
+
+                    <article class="card reveal"><span class="card__icon">💰</span>
+                        <h3>Quanto sobrou</h3>
+                        <p>Estimativa do período considerando gastos e uma reserva sugerida para impostos.</p>
+                    </article>
+
+                    <article class="card reveal"><span class="card__icon">🚦</span>
+                        <h3>Alerta do limite do MEI</h3>
+                        <p>Acompanhe o faturamento acumulado no ano, com a regra utilizada indicada.</p>
+                    </article>
+
+                    <article class="card reveal"><span class="card__icon">🔔</span>
+                        <h3>Lembretes e resumo semanal</h3>
+                        <p>Guia mensal do MEI, contas fixas e um resumo toda semana no WhatsApp.</p>
+                    </article>
+
+                    <article class="card reveal"><span class="card__icon">📄</span>
+                        <h3>Fechamento em PDF</h3>
+                        <p>Painel web de leitura e exportação do mês para enviar ao contador.</p>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="section" id="planos">
+            <div class="container">
+
+                <header class="section__head reveal">
+                    <h2>Planos</h2>
+                    <p>Valores previstos, que serão validados durante o beta.</p>
+                </header>
+
+                <div class="plans">
+
+                    <!-- Plano Pro -->
+                    <article class="plan plan--featured reveal">
+                        <span class="plan__tag">Mais popular</span>
+                        <h3>Pro</h3>
+                        <p class="plan__price">R$ <strong>19,90</strong> <small>/ mês</small></p>
+                        <ul>
+                            <li>Registro por texto, áudio e foto</li>
+                            <li>Separação pessoal × profissional</li>
+                            <li>Importação de extratos (PDF, CSV, OFX)</li>
+                            <li>Alerta do limite do MEI</li>
+                            <li>Lembretes e resumo semanal</li>
+                            <li>Fechamento mensal em PDF</li>
+                        </ul>
+                        <a href="#contato" class="btn btn--primary btn--block">Entrar na lista de espera</a>
+                    </article>
+
+                    <!-- Plano Anual. -->
+                    <article class="plan reveal">
+                        <h3>Anual</h3>
+                        <p class="plan__price">R$ <strong>199</strong> <small>/ ano</small></p>
+                        <ul>
+                            <li>Tudo do plano Pro</li>
+                            <li>Equivale a cerca de R$ 16,58 por mês</li>
+                            <li>Pagamento único no ano</li>
+                        </ul>
+                        <a href="#contato" class="btn btn--outline btn--block">Entrar na lista de espera</a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="section section--alt" id="seguranca">
+            <div class="container">
+
+                <header class="section__head reveal">
+                    <h2>Seus dados e seu controle</h2>
+                    <p>Transparência em primeiro lugar.</p>
+                </header>
+
+                <div class="cards cards--3">
+                    <article class="card reveal"><span class="card__icon">🔒</span>
+                        <h3>Privacidade (LGPD)</h3>
+                        <p>Coletamos só o necessário, com seu consentimento claro, e você poderá exportar ou excluir
+                            seus dados.</p>
+                    </article>
+                    <article class="card reveal"><span class="card__icon">📐</span>
+                        <h3>Estimativas, não promessas</h3>
+                        <p>Os cálculos de impostos são estimativas, com a fonte da regra indicada. O Contaí não
+                            substitui o seu contador.</p>
+                    </article>
+                    <article class="card reveal"><span class="card__icon">👀</span>
+                        <h3>Você revisa tudo</h3>
+                        <p>Mostramos o que a IA interpretou e você corrige antes de fechar o mês.</p>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="section" id="faq">
+            <div class="container container--narrow">
+
+                <header class="section__head reveal">
+                    <h2>Perguntas frequentes</h2>
+                </header>
+
+                <div class="faq">
+                    <details class="reveal">
+                        <summary>O Contaí já está disponível?</summary>
+                        <p>Ainda não. O projeto está em validação e o MVP está previsto para 20/11/2026, seguido de um
+                            beta fechado. Você pode entrar na lista de espera pelo formulário abaixo.</p>
+                    </details>
+
+                    <details class="reveal">
+                        <summary>Preciso instalar algum aplicativo?</summary>
+                        <p>Não. O registro acontece no WhatsApp. O painel web é de leitura e abre direto no navegador.
+                        </p>
+                    </details>
+
+                    <details class="reveal">
+                        <summary>Posso enviar áudio ou foto de comprovante?</summary>
+                        <p>Pode. A IA lê a foto, transcreve o áudio e identifica valor, categoria e se o gasto é pessoal
+                            ou profissional. Você confere e corrige, se precisar.</p>
+                    </details>
+
+                    <details class="reveal">
+                        <summary>O Contaí substitui meu contador?</summary>
+                        <p>Não. Os cálculos de impostos são estimativas, com a fonte da regra indicada. O fechamento
+                            mensal em PDF ajuda você a conversar com o seu contador.</p>
+                    </details>
+
+                    <details class="reveal">
+                        <summary>Meus dados estão seguros?</summary>
+                        <p>Tratamos seus dados conforme a LGPD: coletamos só o necessário, protegemos a transmissão e o
+                            armazenamento e você poderá exportar ou excluir tudo quando quiser.</p>
+                    </details>
+
+                    <details class="reveal">
+                        <summary>Conecta direto com o meu banco?</summary>
+                        <p>Não nesta primeira versão. Você pode importar extratos em PDF, CSV ou OFX. A conexão
+                            automática com bancos fica para uma fase posterior.</p>
+                    </details>
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <section class="section section--alt" id="contato">
+            <div class="container container--narrow">
+                <div class="form-card reveal">
+
+                    <h2>Fale com o Contaí</h2>
+                    <p>Quer entrar na lista de espera, tirar uma dúvida ou deixar uma sugestão? Preencha o formulário e
+                        nossa equipe responde assim que possível.</p>
+
+                    <!-- novalidate: desliga as mensagens padrão do navegador-->
+                    <form id="form-contato" novalidate>
+
+                        <!-- Campo: nome. -->
+                        <div class="field">
+                            <label for="nome">Nome completo <span aria-hidden="true">*</span></label>
+                            <input id="nome" name="nome" type="text" placeholder="Digite seu nome" autocomplete="name"
+                                required />
+                            <small class="error" aria-live="polite"></small>
+                        </div>
+
+                        <!-- Campo: e-mail. -->
+                        <div class="field">
+                            <label for="email">E-mail <span aria-hidden="true">*</span></label>
+                            <input id="email" name="email" type="email" placeholder="seuemail@exemplo.com"
+                                autocomplete="email" required />
+                            <small class="error" aria-live="polite"></small>
+                        </div>
+
+                        <!-- Campo: assunto -->
+                        <div class="field">
+                            <label for="assunto">Assunto <span aria-hidden="true">*</span></label>
+                            <select id="assunto" name="assunto" required>
+                                <option value="">Selecione um assunto</option>
+                                <option>Entrar na lista de espera</option>
+                                <option>Dúvida</option>
+                                <option>Sugestão</option>
+                                <option>Problema técnico</option>
+                                <option>Outro</option>
+                            </select>
+                            <small class="error" aria-live="polite"></small>
+                        </div>
+
+                        <!-- Campo: mensagem. -->
+                        <div class="field">
+                            <label for="mensagem">Mensagem <span aria-hidden="true">*</span></label>
+                            <textarea id="mensagem" name="mensagem" rows="5"
+                                placeholder="Conte se você é autônomo ou MEI e como podemos ajudar" required></textarea>
+                            <small class="error" aria-live="polite"></small>
+                        </div>
+
+
+                        <div class="field field--check">
+                            <label class="check">
+                                <input id="consentimento" name="consentimento" type="checkbox" required />
+                                <span>Concordo em ser contatado pelo Contaí e com o uso dos meus dados apenas para essa
+                                    finalidade (LGPD).</span>
+                            </label>
+                            <small class="error" aria-live="polite"></small>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--block btn--lg">Enviar mensagem</button>
+
+
+                        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+
+
+
+
+
 </body>
+
 </html>
