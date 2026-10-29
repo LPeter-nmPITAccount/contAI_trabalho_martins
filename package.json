@@ -1,21 +1,21 @@
 {
-  "name": "trabalho_final_pit_dw_fic_bd",
+  "name": "Contaí",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Landing page do Contaí (assistente financeiro com IA no WhatsApp para autônomos e MEIs) com atendente virtual Taí (Groq)",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LPeter-nmPITAccount/trabalho_final_pit_dw_fic_bd.git"
+    "url": "git+https://github.com/LPeter-nmPITAccount/contAI_trabalho_martins"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
-    "url": "https://github.com/LPeter-nmPITAccount/trabalho_final_pit_dw_fic_bd/issues"
+    "url": "https://github.com/LPeter-nmPITAccount/contAI_trabalho_martins/issues"
   },
-  "homepage": "https://github.com/LPeter-nmPITAccount/trabalho_final_pit_dw_fic_bd#readme"
+  "homepage": "https://github.com/LPeter-nmPITAccount/contAI_trabalho_martins#readme"
 }
