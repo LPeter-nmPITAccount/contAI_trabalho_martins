@@ -1,0 +1,230 @@
+:root {
+  /* Tons de verde, do mais escuro (900) ao mais claro (50) */
+  --green-900: #0b2e22;
+  --green-700: #14644a;
+  --green-600: #1f7a54;
+  --green-400: #5fae7c;
+  --green-200: #bfe6cd;
+  --green-100: #e3f5ea;
+  --green-50: #f3faf6;
+
+  /* Cores de apoio */
+  --orange: #f6a43a; 
+  --red: #c9443b;   
+
+  /* Cores de texto, linhas e fundo */
+  --text: #17261f;     
+  --muted: #55655d;    
+  --border: #dbe8e0;   
+  --white: #fff;
+
+  /* Aparência geral */
+  --radius: 16px;                                  
+  --shadow: 0 10px 30px rgba(11, 46, 34, 0.08);    
+
+  /* Fontes (vindas do Google Fonts, com opção de reserva) */
+  --font-title: "Poppins", system-ui, sans-serif;  
+  --font-text: "Inter", system-ui, sans-serif;     
+}
+
+/* "*" significa "todos os elementos". */
+*,
+*::before,
+*::after {
+  /* Faz a largura incluir borda e espaçamento interno.
+     Assim um bloco de 100% nunca estoura a tela. */
+  box-sizing: border-box;
+}
+
+html {
+  /* Ao clicar em um link do menu, a página rola suavemente. */
+  scroll-behavior: smooth;
+
+  /* Deixa uma folga no topo para o cabeçalho fixo não cobrir o título. */
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;                       /* tira a margem padrão da página */
+  font-family: var(--font-text);
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;                /* espaço entre as linhas de texto */
+  -webkit-font-smoothing: antialiased;  /* deixa a letra mais suave */
+}
+
+img,
+svg {
+  display: block;       /* evita um pequeno espaço embaixo das imagens */
+  max-width: 100%;      /* imagem nunca passa da largura da tela */
+}
+
+a {
+  color: inherit;             /* o link usa a cor do texto em volta */
+  text-decoration: none;      /* tira o sublinhado */
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;     /* tira as bolinhas e números das listas */
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+blockquote {
+  margin: 0;            /* tira o espaçamento padrão; controlamos nós mesmos */
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-title);
+  line-height: 1.15;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;        /* campos usam a mesma fonte do resto do site */
+  color: inherit;
+}
+
+
+/* Esconde um elemento (o JavaScript usa para abrir e fechar o chat). */
+.hidden {
+  display: none !important;
+}
+
+/* "Somente leitores de tela": some da vista, mas continua sendo lido por
+   quem usa tecnologia assistiva. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Link "Pular para o conteúdo": invisível, aparece só ao apertar Tab. */
+.skip {
+  position: absolute;
+  left: -9999px;      
+  top: 8px;
+  z-index: 100;
+  background: var(--green-900);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+.skip:focus {
+  left: 8px;          
+}
+
+/* Caixa que centraliza o conteúdo e limita a largura máxima. */
+.container {
+  width: min(1120px, 100% - 40px);   /* no máximo 1120px, sempre com 20px de folga */
+  margin-inline: auto;               /* centraliza na horizontal */
+}
+
+/* Versão mais estreita, usada em FAQ e formulário. */
+.container--narrow {
+  width: min(760px, 100% - 40px);
+}
+
+
+/* =====================================================================
+   4) BOTÕES
+   ===================================================================== */
+.btn {
+  display: inline-flex;          /* conteúdo alinhado em linha */
+  align-items: center;           /* centraliza na vertical */
+  justify-content: center;       /* centraliza na horizontal */
+  gap: 10px;                     /* espaço entre texto e seta */
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  font-weight: 600;
+  cursor: pointer;               /* mãozinha ao passar o mouse */
+  transition:                    /* animação suave ao mudar */
+    transform 0.15s,
+    box-shadow 0.15s,
+    background 0.15s,
+    color 0.15s;
+}
+
+/* Ao passar o mouse, o botão sobe um pouquinho. */
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Contorno laranja visível para quem navega pelo teclado (Tab). */
+.btn:focus-visible,
+a:focus-visible,
+summary:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+/* Botão principal: fundo verde, texto branco. */
+.btn--primary {
+  background: var(--green-600);
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(31, 122, 84, 0.3);
+}
+
+.btn--primary:hover {
+  background: var(--green-700);
+}
+
+/* Botão secundário: só o contorno verde, fundo transparente. */
+.btn--outline {
+  background: transparent;
+  color: var(--green-700);
+  border-color: var(--green-600);
+}
+
+.btn--outline:hover {
+  background: var(--green-600);
+  color: #fff;
+}
+
+/* Tamanhos: pequeno, grande e "bloco" (ocupa toda a largura). */
+.btn--sm {
+  padding: 9px 18px;
+  font-size: 0.9rem;
+}
+
+.btn--lg {
+  padding: 15px 28px;
+  font-size: 1.05rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* =====================================================================
+   5) CABEÇALHO (topo com logo e menu)
+   ===================================================================== */
+.header {
+  position: sticky;                          /* fica grudado no topo ao rolar */
+  top: 0;
+  z-index: 50;                               /* fica por cima do resto */
+  background: rgba(255, 255, 255, 0.94);     /* branco levemente transparente */
+  backdrop-filter: blur(10px);               /* desfoca o que passa por trás */
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
