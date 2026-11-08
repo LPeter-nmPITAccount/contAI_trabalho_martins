@@ -92,4 +92,133 @@
     } else {
         itensRevelar.forEach((elemento) => elemento.classList.add("is-visible"));
     }
+
+/* ===================================================================
+ 4) FAQ: ABRE UMA PERGUNTA POR VEZ
+===================================================================
+*/
+    
+    const itensFaq = $$(".faq details");
+    
+    itensFaq.forEach((item) => {
+        item.addEventListener("toggle", () => {
+        if (item.open) {
+            itensFaq.forEach((outro) => {
+            if (outro !== item) outro.open = false;
+            });
+        }
+        });
+    });
+    
+    
+/* ===================================================================
+    5) FORMULÁRIO DE CONTATO / LISTA DE ESPERA
+    ===================================================================
+*/
+    
+    const formulario = $("#form-contato");
+    const elementoStatus = $("#formStatus");
+    
+    const regras = {
+        nome: (elemento) =>
+        elemento.value.trim().length < 3 ? "Informe seu nome completo." : "",
+    
+        email: (elemento) =>
+        /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(elemento.value.trim())
+            ? ""
+            : "Informe um e-mail válido.",
+    
+        assunto: (elemento) => (elemento.value ? "" : "Selecione um assunto."),
+    
+        mensagem: (elemento) =>
+        elemento.value.trim().length < 10 ? "Escreva ao menos 10 caracteres." : "",
+    
+        consentimento: (elemento) =>
+        elemento.checked ? "" : "É preciso concordar para enviar.",
+    };
+    
+    function validar(elemento, mensagemExterna) {
+        const mensagem = mensagemExterna ?? regras[elemento.name](elemento);
+        const campo = elemento.closest(".field");
+    
+        campo.classList.toggle("has-error", Boolean(mensagem));
+        $(".error", campo).textContent = mensagem;
+        elemento.setAttribute("aria-invalid", mensagem ? "true" : "false");
+    
+        return !mensagem;
+    }
+    
+    const campos = $$("input, select, textarea", formulario);
+    
+    campos.forEach((elemento) => {
+        elemento.addEventListener("blur", () => validar(elemento));
+    
+        const reconferir = () => {
+        if (elemento.closest(".field").classList.contains("has-error")) validar(elemento);
+        };
+    
+        elemento.addEventListener("input", reconferir);
+        elemento.addEventListener("change", reconferir);
+    });
+    
+    formulario.addEventListener("submit", async (evento) => {
+        evento.preventDefault();
+    
+        elementoStatus.textContent = "";
+        elementoStatus.className = "form-status";
+    
+        const resultados = campos.map((elemento) => validar(elemento));
+    
+        if (resultados.includes(false)) {
+        campos.find((elemento) => elemento.getAttribute("aria-invalid") === "true")?.focus();
+        return;
+        }
+    
+        const botao = $("button[type=submit]", formulario);
+        const textoOriginal = botao.textContent;
+        botao.disabled = true;
+        botao.textContent = "Enviando...";
+    
+        const dadosFormulario = {
+        nome: formulario.nome.value,
+        email: formulario.email.value,
+        assunto: formulario.assunto.value,
+        mensagem: formulario.mensagem.value,
+        consentimento: formulario.consentimento.checked,
+        };
+    
+        try {
+        const resposta = await fetch("/api/contato", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dadosFormulario),
+        });
+    
+        const dados = await resposta.json().catch(() => ({}));
+    
+        if (!resposta.ok) {
+            if (dados.campos) {
+            Object.entries(dados.campos).forEach(([nome, mensagem]) => {
+                if (formulario[nome]) validar(formulario[nome], mensagem);
+            });
+            }
+            throw new Error(dados.erro || "Erro " + resposta.status);
+        }
+    
+        elementoStatus.textContent =
+            "Mensagem enviada! Responderemos o mais rápido possível. 💚";
+        elementoStatus.classList.add("ok");
+    
+        formulario.reset();
+        $$(".field", formulario).forEach((campo) => campo.classList.remove("has-error"));
+        } catch (erro) {
+        elementoStatus.textContent =
+            "Não foi possível enviar agora. Confira se o servidor está ligado (npm start) e tente de novo.";
+        elementoStatus.classList.add("fail");
+        console.error(erro);
+        } finally {
+        botao.disabled = false;
+        botao.textContent = textoOriginal;
+        }
+    }); 
 })()
