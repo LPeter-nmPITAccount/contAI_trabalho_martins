@@ -221,4 +221,105 @@
         botao.textContent = textoOriginal;
         }
     }); 
+/* ===================================================================
+    6) CHAT COM A TAÍ (IA)
+    ===================================================================
+*/
+ 
+    const botaoChat = $("#chat-toggle");
+    const chat = $("#chat");
+    const fechar = $("#fechar");
+    const botaoEnviar = $("#enviar");
+    const campoTexto = $("#input");
+    const areaMensagens = $("#chat-box");
+    const sugestoes = $("#chat-chips");
+    
+    const idSessao = crypto.randomUUID
+        ? crypto.randomUUID()
+        : String(Date.now()) + Math.random();
+    
+    function abrirChat() {
+        chat.classList.remove("hidden");
+        botaoChat.setAttribute("aria-expanded", "true");
+        campoTexto.focus();
+    }
+    
+    function fecharChat() {
+        chat.classList.add("hidden");
+        botaoChat.setAttribute("aria-expanded", "false");
+    }
+    
+    botaoChat.addEventListener("click", () =>
+        chat.classList.contains("hidden") ? abrirChat() : fecharChat()
+    );
+    
+    fechar.addEventListener("click", fecharChat);
+    
+    $$("[data-open-chat]").forEach((botao) => botao.addEventListener("click", abrirChat));
+    
+    document.addEventListener("keydown", (evento) => {
+        if (evento.key === "Escape" && !chat.classList.contains("hidden")) fecharChat();
+    });
+    
+    botaoEnviar.addEventListener("click", () => enviar());
+    
+    campoTexto.addEventListener("keydown", (evento) => {
+        if (evento.key === "Enter") enviar();
+    });
+    
+    sugestoes.addEventListener("click", (evento) => {
+        const botao = evento.target.closest("button[data-pergunta]");
+        if (botao) enviar(botao.dataset.pergunta);
+    });
+    
+    function adicionarMensagem(tipo, texto) {
+        const elementoMensagem = document.createElement("div");
+        elementoMensagem.className = tipo;
+        elementoMensagem.textContent = texto;
+    
+        areaMensagens.appendChild(elementoMensagem);
+        areaMensagens.scrollTop = areaMensagens.scrollHeight;
+    
+        return elementoMensagem;
+    }
+    
+    async function enviar(textoDireto) {
+        const texto = (textoDireto ?? campoTexto.value).trim();
+    
+        if (!texto || campoTexto.disabled) return;
+    
+        adicionarMensagem("usuario", texto);
+        campoTexto.value = "";
+        sugestoes.classList.add("hidden");
+    
+        campoTexto.disabled = true;
+        botaoEnviar.disabled = true;
+        const digitando = adicionarMensagem("bot", "Digitando...");
+    
+        try {
+        const resposta = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ mensagem: texto, sessionId: idSessao }),
+        });
+    
+        const dados = await resposta.json().catch(() => ({}));
+    
+        if (!resposta.ok) throw new Error(dados.erro || "Erro " + resposta.status);
+    
+        digitando.remove();
+        adicionarMensagem("bot", dados.resposta);
+        } catch (erro) {
+        digitando.remove();
+        adicionarMensagem(
+            "erro",
+            "Ops! Não consegui responder agora. 😕 (" + erro.message + ")"
+        );
+        console.error(erro);
+        } finally {
+        campoTexto.disabled = false;
+        botaoEnviar.disabled = false;
+        campoTexto.focus();
+        }
+    }
 })()
