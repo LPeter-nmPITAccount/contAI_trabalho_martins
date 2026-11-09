@@ -453,7 +453,7 @@
     <footer class="footer">
         <div class="container footer_inner">
             <div class="footer_logo">
-                <strong class="footer_logo"Contaí></strong>
+                <strong class="footer_logo">Contaí</strong>
                 <p>Seu financeiro no WhatsApp</p>
             </div>
 
@@ -467,12 +467,59 @@
 
             <div class="footer_legal">
                 <small>O Contaí não oferece consultoria tributária nem recomendação de investimentos. Valores de impostos são estimativas.</small>
-                <small>Projeto acadêmico · PIT · Tecnologia em Inteligência Artificial</sm☺all>
+                <small>Projeto acadêmico · PIT · Tecnologia em Inteligência Artificial</small>
                 
                 <small>© <span id="year">2026</span> Contaí. Todos os direitos reservados.</small>
             </div>
         </div>
     </footer>
+
+
+    <!-- =================================================================
+         CHAT COM A IA (Taí)
+         ================================================================= -->
+
+    <!-- Botão redondo no canto da tela que abre e fecha o chat. -->
+    <button id="chat-toggle" class="chat-toggle" aria-label="Abrir chat com a Taí, atendente virtual" aria-expanded="false" aria-controls="chat">
+        <img src="img/mascote.png" alt="" width="40" height="40" />
+    </button>
+
+    <!-- Janela do chat. Começa escondida (classe "hidden"). -->
+    <div id="chat" class="chat-widget hidden" role="dialog" aria-label="Chat com a Taí">
+
+        <!-- Cabeçalho do chat. -->
+        <div class="chat-header">
+            <img src="img/mascote.png" alt="" width="32" height="32" />
+            <div>
+                <strong>Taí</strong>
+                <small>Atendente virtual do Contaí</small>
+            </div>
+            <button id="fechar" aria-label="Fechar chat">✕</button>
+        </div>
+
+        <!-- Área das mensagens. A 1ª mensagem é a de boas-vindas. -->
+        <div id="chat-box" class="chat-box" aria-live="polite">
+            <div class="bot">Oi! Eu sou a Taí, atendente virtual do Contaí 👋 Posso explicar como o Contaí funciona, falar de planos ou te colocar na lista de espera.</div>
+        </div>
+
+        <!-- Perguntas sugeridas. O "data-pergunta" é o texto enviado ao clicar. -->
+        <div class="chat-chips" id="chat-chips">
+            <button type="button" data-pergunta="O que é o Contaí?">O que é o Contaí?</button>
+            <button type="button" data-pergunta="Quanto custa?">Quanto custa?</button>
+            <button type="button" data-pergunta="Quero entrar na lista de espera">Lista de espera</button>
+        </div>
+
+        <!-- Campo para digitar e botão de enviar. -->
+        <div class="chat-input-area">
+            <input type="text" id="input" placeholder="Digite sua mensagem..." maxlength="500" aria-label="Mensagem para a Taí" autocomplete="off" />
+            <button id="enviar">Enviar</button>
+        </div>
+
+    </div>
+
+    <!-- Liga o arquivo de comportamento (JavaScript). Fica no fim da página
+         para só rodar depois que todos os elementos acima já existem. -->
+    <script src="script.js"></script>
 </body>
 
 </html>
